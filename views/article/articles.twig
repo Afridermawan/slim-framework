@@ -1,22 +1,23 @@
 {% extends 'templates/default.twig' %}
 
 {% block content %}
-	<div class="container">
-		<table class="table">
-		  <thead class="thead-inverse">
-		    <tr>
-		      <th>First Name</th>
-		      <th>Last Name</th>
-		      <th>Username</th>
-		    </tr>
-		  </thead>
-		  {% for item in article %}
-		    <tr>
-		      <td>{{ item.image }}</td>
-		      <td>{{ item.title }}</td>
-		      <td>{{ item.content }}</td>
-		    </tr>
-		   {% endfor %}
-		</table>
-	</div>
+	{% for item in article %}
+	 <div class="row">
+	    <div class="col s12 m6">
+	      <div class="card">
+	        <div class="card-image">
+	          <img src="{{ item.image }}">
+	        </div>
+	        <div class="card-content">
+	        <span class="card-title">{{ item.title }}</span>
+	          <p>{{ item.content }}</p>
+	        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    			<i class="material-icons right">send</i>
+  			</button>
+  			<a href="{{ path_for('articles') }}/del/{{item.id}}" class="btn red">Hapus</a>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	{% endfor %}
 {% endblock  %}

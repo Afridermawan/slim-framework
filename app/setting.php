@@ -17,6 +17,9 @@ return [
 				'debug' => true,
 				'auto_reload' => true,
 			]
+		],
+		'lang' => [
+			'default' => 'id'
 		]
 	]
 ];

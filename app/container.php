@@ -27,7 +27,25 @@ $container['view'] = function ($c) {
 		$settings['view']['twig']);
 	$view->addExtension(new Slim\Views\TwigExtension($c->router, $c->request->getUri()));
 
+	if (isset($_SESSION['old'])) {
+		$view->getEnvironment()->addGlobal('old', $_SESSION['old']);
+		unset($_SESSION['old']);
+	} 
+
+	if (isset($_SESSION['errors'])) {
+		$view->getEnvironment()->addGlobal('errors', $_SESSION['errors']);
+		unset($_SESSION['errors']);
+	}
+
 	return $view;
+};
+
+$container['validation'] = function ($c) {
+	$settings = $c->get('settings');
+	$param = $c['request']->getParams();
+	$lang = $settings['lang'];
+
+	return new \Valitron\Validator($param, [], $lang['default']);
 };
 
 

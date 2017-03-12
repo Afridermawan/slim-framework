@@ -35,6 +35,7 @@ class CreateTableArticle extends AbstractMigration
                 ->addColumn('user_id', 'integer')
                 ->addColumn('created', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
                 ->addColumn('updated', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
+                ->addColumn('deleted', 'integer', ['default' => '0'])
                 ->create();
     }
 }

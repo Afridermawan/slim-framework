@@ -1,0 +1,48 @@
+{% extends 'templates/default.twig' %}
+
+{% block content %}
+	<div class="row">
+    <form class="col s12" action="{{ path_for('articles.add') }}" method="post">
+      <div class="row">
+        <div class="input-field col s12 {{ errors.title ? 'has-error' : '' }}">
+          <input type="text" name="title" id="title" value="{{ old.title }}">
+          <label for="title">Title</label>
+        {% if errors.title %}
+          <span class="help-block">{{errors.title | first}}</span>
+      	{% endif %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 {{ errors.content ? 'has-error' : '' }}">
+          <input id="" class="materialize-textarea" type="text" name="content" value="{{ old.content }}">
+          <label for="content">Content</label>
+        {% if errors.content %}
+		  	<span class="help-block">{{errors.content | first}}</span>
+		{% endif %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 {{ errors.image ? 'has-error' : '' }}">
+          <input id="image" type="text" name="image">
+          <label for="image"></label>
+        {% if errors.image %}
+		  	<span class="help-block">{{errors.image | first}}</span>
+		{% endif %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 {{ errors.image ? 'has-error' : '' }}">
+          <input name="publish_date" type="text" value="{{ old.publish_date }}">
+          <label for="publish_date">Publish date</label>
+        {% if errors.image %}
+			<span class="help-block">{{errors.image | first}}</span>
+		{% endif %}
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="submit">Submit
+    	<i class="material-icons right">send</i>
+  	  </button>
+    </form>
+  </div>
+{% endblock %} 
+ 
